@@ -1,0 +1,1 @@
+C:\Users\sergey.churkov\Documents\Projects\Unity\taxi_core_system_3dMobile\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\6820265v\obj\arm64-v8a
