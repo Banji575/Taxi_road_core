@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Car : MonoBehaviour
 {
@@ -12,21 +13,33 @@ public class Car : MonoBehaviour
         Idle
     }
 
+    private enum TypeOfTarget
+    {
+        CrossRoad,
+        Boundary,
+        Car
+    }
+
 
     [SerializeField]
     private CarRuleSet carRuleSet;
+    [SerializeField]
+    private GameObject testSphere;
+    [SerializeField]
+    private int speed;
 
-    public event EventHandler onClickHandler;
+    public event EventHandler OnClickHandler;
     public bool isMove = false;
     public bool isMoveBackward = false;
     private int currentRule = 0;
 
-    private Transform currentTarget;
+    private Vector3 currentTarget;
     private Guid carId;
 
     public List<Vector3> waypoints;
 
     private State state;
+    private TypeOfTarget typeOfCurrentTarget;
 
     private void Start()
     {
@@ -50,15 +63,13 @@ public class Car : MonoBehaviour
         Intersection intersection = other.GetComponent<Intersection>();
         if (intersection != null && isMove)
         {
-            currentTarget = intersection.GetClosestWaypoint(transform.position);
+           // currentTarget = intersection.GetClosestWaypoint(transform.position);
         }
     }
 
     private void HandleCarCollision(Collider other)
     {
         Car otherCar = other.GetComponent<Car>();
-
-        Debug.Log("Collide");
 
         if (otherCar != null && !isMoveBackward)
         {
@@ -80,13 +91,13 @@ public class Car : MonoBehaviour
         if (currentTarget != null && !isMoveBackward)
         {
             Vector3 currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
-            Vector3 targetPosition = new Vector3(currentTarget.position.x, 0, currentTarget.position.z);
+            Vector3 targetPosition = new Vector3(currentTarget.x, 0, currentTarget.z);
             float distance = Vector3.Distance(currentPosition, targetPosition);
             if (distance <= 0.1f)
             {
                 transform.position = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
                 ExecuteCurrentRule();
-                currentTarget = null;
+               // currentTarget = null;
                 /*                if (isMoveBackward)
                                 {
                                     ExecuteCurrentRuleBackward();
@@ -115,10 +126,11 @@ public class Car : MonoBehaviour
     {
         if (currentRule < carRuleSet.rules.Length)
         {
-            waypoints.Add(new Vector3(currentTarget.position.x, transform.position.y, currentTarget.position.z));
+            waypoints.Add(new Vector3(currentTarget.x, transform.position.y, currentTarget.z));
             carRuleSet.rules[currentRule].Execute(this);
             currentRule++;
         }
+
     }
 
     private void ExecuteCurrentRuleBackward()
@@ -128,6 +140,52 @@ public class Car : MonoBehaviour
             currentRule--;
             carRuleSet.rules[currentRule].Execute(this);
         }
+    }
+
+    public void StartMove()
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
+       if(Physics.Raycast(ray, out hit))
+        {
+            Intersection intersection = hit.transform.GetComponent<Intersection>();
+            if (intersection)
+            {
+                typeOfCurrentTarget = TypeOfTarget.CrossRoad;
+                currentTarget = intersection.GetClosestWaypoint(hit.point);
+                currentTarget.y = transform.position.y;
+                testSphere.transform.position = currentTarget;
+                isMove = true;
+                return;
+            }
+            else
+            {
+                Bounder bounder = hit.transform.GetComponent<Bounder>();
+                if (bounder)
+                {
+                    typeOfCurrentTarget = TypeOfTarget.Boundary;
+                    currentTarget = hit.point;
+                    testSphere.transform.position = currentTarget;
+                    isMove = true;
+                }
+                else
+                {
+                    Car car = hit.transform.GetComponent<Car>();
+                    if (car)
+                    {
+                        typeOfCurrentTarget = TypeOfTarget.Car;
+                        currentTarget = hit.point;
+                        testSphere.transform.position = currentTarget;
+                        isMove = true;
+                    }
+                }
+            }
+        }
+
+        
+
+
     }
 
     public void MoveForward()
@@ -144,7 +202,7 @@ public class Car : MonoBehaviour
         else
         {
             transform.Rotate(0, -90, 0);
-            isMove = true;
+            //isMove = true;
         }
     }
 
@@ -157,15 +215,38 @@ public class Car : MonoBehaviour
         else
         {
             transform.Rotate(0, 90, 0);
-            isMove = true;
+            //isMove = true;
         }
     }
 
     private void Move()
     {
-        Vector3 newPos = 2 * Time.deltaTime * transform.forward;
-        transform.position = transform.position + newPos;
+        transform.position = Vector3.MoveTowards(transform.position, currentTarget, Time.deltaTime * speed);
+        float carDistance = .25f;
+        float crossRoadDistance = 0f;
+        float dist = typeOfCurrentTarget == TypeOfTarget.Car ? carDistance : crossRoadDistance;
+
+        if(Vector3.Distance(transform.position, currentTarget) <= dist)
+        {
+            if(typeOfCurrentTarget == TypeOfTarget.CrossRoad)
+            {
+                isMove = false;
+                ExecuteCurrentRule();
+                StartMove();
+            }else if(typeOfCurrentTarget == TypeOfTarget.Car)
+            {
+                isMove = false;
+
+                isMoveBackward = true;
+            }
+            else if(typeOfCurrentTarget == TypeOfTarget.Boundary)
+            {
+                isMove = false;
+                Destroy(gameObject);
+            }
+        }
     }
+
 
     private void MoveBackward()
     {
@@ -176,13 +257,6 @@ public class Car : MonoBehaviour
                 return;
             }
 
-        /*       if(waypoints.Count == 0)
-               {
-                   Debug.Log("no points");
-                   isMoveBackward = true;
-                   return;
-               }*/
-
         Vector3 targetPoint = waypoints[waypoints.Count -1];
         Vector3 target = new Vector3(targetPoint.x, targetPoint.y, targetPoint.z);
         // Игнорируем ось Y
@@ -191,7 +265,8 @@ public class Car : MonoBehaviour
         Vector3 dir = target - transform.position;
         Vector3 newPos = 2 * Time.deltaTime * dir.normalized;
 
-        transform.position = transform.position + newPos;
+        //transform.position = transform.position + newPos;
+        transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed * 2);
         float dist = Vector3.Distance(target, transform.position);
 
         if (dist < .01f)
@@ -199,13 +274,6 @@ public class Car : MonoBehaviour
             transform.position = target;
             waypoints.RemoveAt(waypoints.Count - 1);
             ExecuteCurrentRuleBackward();
-
-    /*        if (waypoints.Count == 0)
-            {
-                isMoveBackward = false;
-                SetStartPostionToWaypoints();
-                return;
-            }*/
         }
     }
 
@@ -225,7 +293,7 @@ public class Car : MonoBehaviour
     {
         if (isMove)
         {
-            CheckWaypoint();
+            //CheckWaypoint();
             Move();
             return;
         }

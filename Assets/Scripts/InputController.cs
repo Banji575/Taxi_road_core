@@ -40,7 +40,8 @@ public class InputController : MonoBehaviour
         Car car = hit.collider.gameObject.GetComponent<Car>();
         if (car)
         {
-            car.isMove = true;
+            car.StartMove();
+            //car.isMove = true;
         }
     }
 
