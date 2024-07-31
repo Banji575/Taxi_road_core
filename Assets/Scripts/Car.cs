@@ -152,6 +152,7 @@ public class Car : MonoBehaviour
             Intersection intersection = hit.transform.GetComponent<Intersection>();
             if (intersection)
             {
+                Debug.Log("crossroad hit");
                 typeOfCurrentTarget = TypeOfTarget.CrossRoad;
                 currentTarget = intersection.GetClosestWaypoint(hit.point);
                 currentTarget.y = transform.position.y;
@@ -164,6 +165,7 @@ public class Car : MonoBehaviour
                 Bounder bounder = hit.transform.GetComponent<Bounder>();
                 if (bounder)
                 {
+                    Debug.Log("Bounder hit");
                     typeOfCurrentTarget = TypeOfTarget.Boundary;
                     currentTarget = hit.point;
                     testSphere.transform.position = currentTarget;
@@ -174,6 +176,7 @@ public class Car : MonoBehaviour
                     Car car = hit.transform.GetComponent<Car>();
                     if (car)
                     {
+                        Debug.Log("Car hit");
                         typeOfCurrentTarget = TypeOfTarget.Car;
                         currentTarget = hit.point;
                         testSphere.transform.position = currentTarget;
