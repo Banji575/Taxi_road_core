@@ -28,7 +28,6 @@ public class Car : MonoBehaviour
     [SerializeField]
     private int speed;
 
-    public event EventHandler OnClickHandler;
     public bool isMove = false;
     public bool isMoveBackward = false;
     private int currentRule = 0;
@@ -144,6 +143,7 @@ public class Car : MonoBehaviour
 
     public void StartMove()
     {
+        Debug.Log("Start move");
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
@@ -156,7 +156,7 @@ public class Car : MonoBehaviour
                 typeOfCurrentTarget = TypeOfTarget.CrossRoad;
                 currentTarget = intersection.GetClosestWaypoint(hit.point);
                 currentTarget.y = transform.position.y;
-                testSphere.transform.position = currentTarget;
+                //testSphere.transform.position = currentTarget;
                 isMove = true;
                 return;
             }
@@ -168,7 +168,7 @@ public class Car : MonoBehaviour
                     Debug.Log("Bounder hit");
                     typeOfCurrentTarget = TypeOfTarget.Boundary;
                     currentTarget = hit.point;
-                    testSphere.transform.position = currentTarget;
+                    //testSphere.transform.position = currentTarget;
                     isMove = true;
                 }
                 else
@@ -179,7 +179,7 @@ public class Car : MonoBehaviour
                         Debug.Log("Car hit");
                         typeOfCurrentTarget = TypeOfTarget.Car;
                         currentTarget = hit.point;
-                        testSphere.transform.position = currentTarget;
+                        //testSphere.transform.position = currentTarget;
                         isMove = true;
                     }
                 }
@@ -245,6 +245,7 @@ public class Car : MonoBehaviour
             else if(typeOfCurrentTarget == TypeOfTarget.Boundary)
             {
                 isMove = false;
+                LevelController.Instance.EscapeCar();
                 Destroy(gameObject);
             }
         }
