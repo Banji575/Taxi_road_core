@@ -5,7 +5,7 @@ public class LevelController : MonoBehaviour
 {
     public static LevelController Instance;
     private int CarsInLevel;
-    private Level currentLevel = null;
+    public Level currentLevel = null;
 
     public event EventHandler OnLevelEnd;
 
@@ -18,6 +18,7 @@ public class LevelController : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnStartNextLevel += GameManager_OnStartNextLevel;
+        GameManager.Instance.NextLevel();
     }
 
     private void GameManager_OnStartNextLevel(object sender, GameManager.OnStartNextLevelEventArgs e)

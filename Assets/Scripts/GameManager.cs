@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public int changedLevel;
 
     public event EventHandler OnCarEscape;
     public event EventHandler<OnStartNextLevelEventArgs> OnStartNextLevel;
@@ -16,13 +17,14 @@ public class GameManager : MonoBehaviour
 
     private int maxCarToNextLevel;
 
+
     [SerializeField]
     private List<Level> levels;
 
     private int currentLevelCount = 0;
     private Level currentLevel;
 
-    private void NextLevel()
+    public void NextLevel()
     {
         if (currentLevel)
         {
@@ -33,16 +35,34 @@ public class GameManager : MonoBehaviour
         currentLevelCount++;
     }
 
+    public void NextLevel(int levelCount)
+    {
+        if (currentLevel)
+        {
+            Destroy(currentLevel);
+        }
+        currentLevel = Instantiate(levels[levelCount], null);
+        OnStartNextLevel?.Invoke(this, new OnStartNextLevelEventArgs { level = currentLevel });
+        currentLevelCount = levelCount + 1;
+    }
+
 
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);  // Сохраняем объект при смене сцены
+        }
+        else
+        {
+            Destroy(gameObject);  // Уничтожаем дубликат объекта
+        }
     }
     private void Start()
     {
         LevelController.Instance.OnLevelEnd += LevelController_OnLevelEnd;
-        NextLevel();
     }
 
     private void LevelController_OnLevelEnd(object sender, EventArgs e)
