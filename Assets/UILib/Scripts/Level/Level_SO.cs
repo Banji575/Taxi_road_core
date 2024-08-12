@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Level", menuName = "Level/Set level")]
-public class Level : ScriptableObject
+[CreateAssetMenu(fileName = "Level_SO", menuName = "Level/Set level")]
+public class Level_SO : ScriptableObject
 {
     [Header("Общая информация")]
     public string levelId;              // ID уровня
