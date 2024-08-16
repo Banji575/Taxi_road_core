@@ -34,4 +34,8 @@ public class GameData : ScriptableObject
     [Header("Баланс игрока")]
     public ScriptableObject playerStoreBalance;  // Ссылка на другой ScriptableObject
     public ScriptableObject playerLevelBalance;  // Ссылка на другой ScriptableObject
+
+
+    public int maxLevel; // максимальный уровень на котором можно играть
+    public int setLevel; // текущий уровень
 }

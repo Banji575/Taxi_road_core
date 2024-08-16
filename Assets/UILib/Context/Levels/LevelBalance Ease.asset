@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3baa1965ff3c924094b045dd9c21717, type: 3}
+  m_Script: {fileID: 11500000, guid: 70be2885516f29644b7786f40a733ad9, type: 3}
   m_Name: LevelBalance Ease
   m_EditorClassIdentifier: 
   offers:
   - {fileID: 11400000, guid: ae0c603bafdd3ca428a4bdd21a8356bf, type: 2}
-  - {fileID: 11400000, guid: ae0c603bafdd3ca428a4bdd21a8356bf, type: 2}
   - {fileID: 11400000, guid: f66399e9b6d1f38478b5c040473c5b9f, type: 2}
-  - {fileID: 11400000, guid: f66399e9b6d1f38478b5c040473c5b9f, type: 2}
-  - {fileID: 11400000, guid: 591e69d93fb31464b80b63d2997219da, type: 2}
   - {fileID: 11400000, guid: 591e69d93fb31464b80b63d2997219da, type: 2}
   - {fileID: 11400000, guid: 7af9d80751227de47be2d3acf0ef2a23, type: 2}
+  - {fileID: 11400000, guid: cdc5416a25f37704880b25aee6d33786, type: 2}
+  - {fileID: 11400000, guid: 993bf3459b55a7246b9dd45f593032a7, type: 2}
+  - {fileID: 11400000, guid: 40ec48706288ca44db8b2ec3903b51c0, type: 2}
