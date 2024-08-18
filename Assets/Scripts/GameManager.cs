@@ -17,36 +17,27 @@ public class GameManager : MonoBehaviour
 
     private int maxCarToNextLevel;
 
-
     [SerializeField]
     private List<Level> levels;
 
     private int currentLevelCount = 0;
     private Level currentLevel;
 
+    [Header("New level system")]
+    
+    public GameData globalContext;
+   
+
+    private void SetGameData()
+    {
+        globalContext.setLevel = 0;
+
+    }
+
     public void NextLevel()
     {
-        if (currentLevel)
-        {
-            Destroy(currentLevel);
-        }
-        currentLevel = Instantiate(levels[currentLevelCount], null);
-        OnStartNextLevel?.Invoke(this, new OnStartNextLevelEventArgs { level = currentLevel });
-        currentLevelCount++;
+        globalContext.setLevel++;
     }
-
-    public void NextLevel(int levelCount)
-    {
-        if (currentLevel)
-        {
-            Destroy(currentLevel);
-        }
-        currentLevel = Instantiate(levels[levelCount], null);
-        OnStartNextLevel?.Invoke(this, new OnStartNextLevelEventArgs { level = currentLevel });
-        currentLevelCount = levelCount + 1;
-    }
-
-
 
     private void Awake()
     {
@@ -62,11 +53,8 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        LevelController.Instance.OnLevelEnd += LevelController_OnLevelEnd;
+
     }
 
-    private void LevelController_OnLevelEnd(object sender, EventArgs e)
-    {
-        NextLevel();
-    }
+
 }

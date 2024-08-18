@@ -38,4 +38,6 @@ public class GameData : ScriptableObject
 
     public int maxLevel; // максимальный уровень на котором можно играть
     public int setLevel; // текущий уровень
+
+    public LevelBalance levelBalance;
 }

@@ -19,6 +19,6 @@ public class Level_SO : ScriptableObject
     
     [Space(10)]
     [Header("Визуальные элементы")]
-    public GameObject levelPrefab;      // Ссылка на префаб
+    public Level levelPrefab;      // Ссылка на префаб
     public GameObject levelTutorial;    // Префаб для туториала перед уровнем (если отсутствует — не показывается)
 }

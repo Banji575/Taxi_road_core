@@ -4,5 +4,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LevelBalanceList", menuName = "Level/Level Balance List")]
 public class LevelBalanceList : ScriptableObject
 {
-    public List<levelBalance> offers;
+    public List<LevelBalance> offers;
 }
