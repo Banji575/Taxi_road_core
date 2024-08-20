@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 328c6cd2e17f8b84e8c1cd2a6546a610, type: 3}
+  m_Script: {fileID: 11500000, guid: c0ba197819b36954d94f0e6fe55b9a7b, type: 3}
   m_Name: StoreBalance MP
   m_EditorClassIdentifier: 
   offers:
