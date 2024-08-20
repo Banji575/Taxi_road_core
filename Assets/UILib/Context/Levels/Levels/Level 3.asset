@@ -17,6 +17,6 @@ MonoBehaviour:
   rewardLevel: 100
   penaltyLevel: -1
   numberOfMoves: 0
-  hardLevel: 0
+  hardLevel: 1
   levelPrefab: {fileID: 0}
   levelTutorial: {fileID: 0}

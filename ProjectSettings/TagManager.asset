@@ -35,8 +35,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - CameraMove
+  - SelectLevelInteractive
+  - SelectLevel
   m_SortingLayers:
   - name: Default
     uniqueID: 0

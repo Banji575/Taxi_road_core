@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3baa1965ff3c924094b045dd9c21717, type: 3}
+  m_Script: {fileID: 11500000, guid: 70be2885516f29644b7786f40a733ad9, type: 3}
   m_Name: LevelBalance Hard
   m_EditorClassIdentifier: 
   offers:

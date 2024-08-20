@@ -9,6 +9,7 @@ public class GameData : ScriptableObject
     public string Platform;                   // Платформа (например, Windows, iOS)
     public string DevicePerformanceClass;     // Класс производительности устройства (например, ultra)
     public int DeviceRamSizeKB;               // Размер оперативной памяти устройства в килобайтах
+    public bool isTouchInput;                 // Поддержка touch ввода
 
     [Space(10)]
     [Header("Состояние игры и игрока")]
@@ -20,7 +21,7 @@ public class GameData : ScriptableObject
     public string Region;                     // Регион пользователя (например, RU)
     public string RegionByIP;                 // Регион пользователя, определённый по IP (например, rs)
     public string Locale;                     // Локаль пользователя (например, ru)
-    public string currencyCode;               // Код и классификатор валюты
+    public string CurrencyCode;               // Код и классификатор валюты
     public bool DevMode;                      // Флаг режима разработчика
     public bool NeedUpdate;                   // Необходимо обновить игру
 

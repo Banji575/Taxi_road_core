@@ -17,6 +17,7 @@ MonoBehaviour:
   Platform: ret
   DevicePerformanceClass: 
   DeviceRamSizeKB: 0
+  isTouchInput: 0
   GameVersion: -540
   IsInternetAvailable: 0
   StoreType: 
@@ -25,7 +26,7 @@ MonoBehaviour:
   Region: 
   RegionByIP: 
   Locale: 
-  currencyCode: RUB
+  CurrencyCode: 
   DevMode: 0
   NeedUpdate: 0
   SoundOn: 0
@@ -33,3 +34,5 @@ MonoBehaviour:
   VibroOn: 0
   playerStoreBalance: {fileID: 11400000, guid: c23faba2a7594504b9911da1724bb826, type: 2}
   playerLevelBalance: {fileID: 11400000, guid: a75f1d7ef5e253b46a8bb593be949e0a, type: 2}
+  maxLevel: 6
+  setLevel: 0
