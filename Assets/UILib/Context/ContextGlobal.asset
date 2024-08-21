@@ -32,7 +32,7 @@ MonoBehaviour:
   SoundOn: 0
   MusicOn: 0
   VibroOn: 0
-  playerStoreBalance: {fileID: 11400000, guid: c23faba2a7594504b9911da1724bb826, type: 2}
   playerLevelBalance: {fileID: 11400000, guid: a75f1d7ef5e253b46a8bb593be949e0a, type: 2}
-  maxLevel: 6
+  playerStoreBalance: {fileID: 0}
+  maxLevel: 1
   setLevel: 0
