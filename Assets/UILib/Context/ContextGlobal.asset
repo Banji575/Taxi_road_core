@@ -18,7 +18,7 @@ MonoBehaviour:
   DevicePerformanceClass: 
   DeviceRamSizeKB: 0
   isTouchInput: 0
-  GameVersion: -540
+  GameVersion: 1
   IsInternetAvailable: 0
   StoreType: 
   IsCheater: 0
@@ -33,6 +33,6 @@ MonoBehaviour:
   MusicOn: 0
   VibroOn: 0
   playerLevelBalance: {fileID: 11400000, guid: a75f1d7ef5e253b46a8bb593be949e0a, type: 2}
-  playerStoreBalance: {fileID: 0}
-  maxLevel: 1
-  setLevel: 0
+  maxLevel: 7
+  setLevel: 7
+  playerStoreBalance: {fileID: 11400000, guid: 0899c94440388eb4e9ed4b61ad75d8db, type: 2}
