@@ -35,4 +35,4 @@ MonoBehaviour:
   playerLevelBalance: {fileID: 11400000, guid: a75f1d7ef5e253b46a8bb593be949e0a, type: 2}
   playerStoreBalance: {fileID: 0}
   maxLevel: 1
-  setLevel: 0
+  setLevel: 1

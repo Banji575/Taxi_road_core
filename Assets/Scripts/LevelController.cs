@@ -60,8 +60,8 @@ public class LevelController : MonoBehaviour
         GameData globalContext = GameManager.Instance.globalContext;
         int levelCount = globalContext.setLevel;
         Debug.Log("level count " +  levelCount.ToString());
-        Debug.Log(globalContext.playerStoreBalance.offers[levelCount].levelPrefab.ToString());
-        GameObject levelGO = Instantiate(globalContext.playerStoreBalance.offers[levelCount].levelPrefab.gameObject, null);
+       /* Debug.Log(globalContext.playerStoreBalance.offers[levelCount].levelPrefab.ToString());*/
+        GameObject levelGO = Instantiate(globalContext.playerLevelBalance.offers[levelCount - 1].levelPrefab.gameObject, null);
         currentLevel = levelGO.GetComponent<Level>();
     }
 
