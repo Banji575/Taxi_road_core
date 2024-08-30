@@ -18,6 +18,6 @@ MonoBehaviour:
   penaltyLevel: -1
   numberOfMoves: 14
   hardLevel: 0
-  levelPrefab: {fileID: 5081122182179945181, guid: fcac7618130ed2f4ea7446e52a598db6,
+  levelPrefab: {fileID: 4424615740687071737, guid: fcac7618130ed2f4ea7446e52a598db6,
     type: 3}
   levelTutorial: {fileID: 0}

@@ -154,7 +154,7 @@ PrefabInstance:
     - target: {fileID: 472918906321392991, guid: 356803b2153c39542a68eb0e053e8e54,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 74.634995
+      value: 67.795
       objectReference: {fileID: 0}
     - target: {fileID: 472918906321392991, guid: 356803b2153c39542a68eb0e053e8e54,
         type: 3}
@@ -265,6 +265,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ButtonCircle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683671931639950940, guid: 356803b2153c39542a68eb0e053e8e54,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104152164438603598, guid: 356803b2153c39542a68eb0e053e8e54,
+        type: 3}
+      propertyPath: m_text
+      value: PLAY
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104152164438603598, guid: 356803b2153c39542a68eb0e053e8e54,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 35.6
       objectReference: {fileID: 0}
     - target: {fileID: 8590719553692204845, guid: 356803b2153c39542a68eb0e053e8e54,
         type: 3}
@@ -694,7 +709,7 @@ PrefabInstance:
     - target: {fileID: 8666552549669933355, guid: 5f24fb289bde010448307d28f0947346,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.000015258789
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8671112632369001149, guid: 5f24fb289bde010448307d28f0947346,
         type: 3}
@@ -775,7 +790,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1080, y: 1080}
+  m_ReferenceResolution: {x: 1580, y: 1080}
   m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1444,7 +1459,7 @@ PrefabInstance:
     - target: {fileID: 8666552549669933355, guid: 5f24fb289bde010448307d28f0947346,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.000015258789
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8671112632369001149, guid: 5f24fb289bde010448307d28f0947346,
         type: 3}

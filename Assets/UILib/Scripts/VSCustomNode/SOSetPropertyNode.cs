@@ -37,7 +37,7 @@ public class SOSetPropertyNode : Unit
         {
             // Получаем значения из входов
             ScriptableObject scriptableObject = flow.GetValue<ScriptableObject>(scriptableObjectInput);
-            string fieldName = flow.GetValue<string>(fieldNameInput)?.ToLower(); // Преобразуем имя в нижний регистр
+            string fieldName = flow.GetValue<string>(fieldNameInput)?.ToLower();
             object value = flow.GetValue<object>(valueInput);
 
             if (scriptableObject != null && !string.IsNullOrEmpty(fieldName))
@@ -52,8 +52,17 @@ public class SOSetPropertyNode : Unit
                 {
                     if (field.Name.ToLower() == fieldName)
                     {
-                        // Устанавливаем значение
-                        field.SetValue(scriptableObject, value);
+                        // Проверяем, соответствует ли тип значения типу поля
+                        if (field.FieldType.IsAssignableFrom(value.GetType()))
+                        {
+                            // Устанавливаем значение
+                            field.SetValue(scriptableObject, value);
+                        }
+                        else
+                        {
+                            Debug.LogError($"Несоответствие типов: Невозможно присвоить {value.GetType()} к {field.FieldType}");
+                        }
+
                         fieldFound = true;
                         break; // Завершаем выполнение
                     }
@@ -61,8 +70,7 @@ public class SOSetPropertyNode : Unit
 
                 if (!fieldFound)
                 {
-                    // Опционально: Вы можете добавить код для обработки случая, когда поле не найдено
-                    // Например, можно установить значение по умолчанию или создать исключение
+                    Debug.LogWarning($"Поле '{fieldName}' не найдено в {scriptableObject.GetType().Name}");
                 }
             }
 

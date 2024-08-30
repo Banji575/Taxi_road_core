@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "StoreOffer", menuName = "Store/Store Offer")]
-public class Offer : ScriptableObject
+public class StoreOffer : ScriptableObject
 {
     [Header("Основная информация")]
     public string offerId;          // ID предложения
