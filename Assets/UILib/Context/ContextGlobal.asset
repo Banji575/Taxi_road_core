@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effb629b12b405e448a30471505aa883, type: 3}
   m_Name: ContextGlobal
   m_EditorClassIdentifier: 
-  OSVersion: windows
+  OSVersion: 
   DeviceModel: 
-  Platform: ret
+  Platform: 
   DevicePerformanceClass: 
   DeviceRamSizeKB: 0
   isTouchInput: 0
-  GameVersion: 1
+  GameVersion: 0
   IsInternetAvailable: 0
   StoreType: 
   IsCheater: 0
-  CurrentTime: 4234130779
+  CurrentTime: 0
   Region: 
   RegionByIP: 
   Locale: 
@@ -32,13 +32,7 @@ MonoBehaviour:
   SoundOn: 0
   MusicOn: 0
   VibroOn: 0
-  playerLevelBalance: {fileID: 11400000, guid: a75f1d7ef5e253b46a8bb593be949e0a, type: 2}
-<<<<<<< HEAD
+  playerLevelBalance: {fileID: 11400000, guid: 0899c94440388eb4e9ed4b61ad75d8db, type: 2}
+  maxLevel: 0
+  setLevel: 0
   playerStoreBalance: {fileID: 0}
-  maxLevel: 1
-  setLevel: 1
-=======
-  maxLevel: 7
-  setLevel: 7
-  playerStoreBalance: {fileID: 11400000, guid: 0899c94440388eb4e9ed4b61ad75d8db, type: 2}
->>>>>>> dev/ui_libs
